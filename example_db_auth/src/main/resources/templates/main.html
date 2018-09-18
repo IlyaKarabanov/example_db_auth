@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Products</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+        <span><a href="/user">User list</a></span>
+    </form>
+    <form th:action="@{/add}" method="post">
+        <input type="text" name="name" />
+        <input type="text" name="dateOfSupply" />
+        <button type="submit">Add</button>
+    </form>
+    <div>Find by name</div>
+    <form th:action="@{/findByName}" method="post">
+        <input type="text" name="name" />
+        <button type="submit">Find</button>
+    </form>
+    <form th:action="@{/deleteAllProducts}" method="post">
+        <button type="submit">удалить все к хуям</button>
+    </form>
+    <div>Result</div>
+    <tr th:each="product: ${products}">
+        <div>
+            <td th:text="${product.getId()}" /></td>
+            <td th:text="${product.getName()}" /></td>
+            <td th:text="${product.getDateOfSupply()}" /></td>
+        </div>
+    </tr>
+</body>
+</html>
